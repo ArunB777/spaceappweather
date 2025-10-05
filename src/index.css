@@ -1,0 +1,59 @@
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+body {
+  @apply text-white;
+  margin: 0;
+  font-family: 'Roboto', sans-serif, 'Arial', sans-serif; /* Fallback fonts */
+  background: linear-gradient(180deg, #38bdf8 0%, #3b82f6 40%, #1e3a8a 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 2s ease-in-out;
+}
+
+/* Smooth transitions for hover/animations */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Subtle animated cloud background */
+.clouds {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* Use local image to avoid CORS (place clouds.png in public/) */
+  background: url("/clouds.png") repeat-x;
+  background-size: 800px;
+  animation: moveClouds 60s linear infinite;
+  opacity: 0.25;
+  z-index: -1;
+}
+
+/* Cloud movement */
+@keyframes moveClouds {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 1000px;
+  }
+}
+
+/* Custom scrollbar (WebKit browsers) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #60a5fa, #2563eb);
+  border-radius: 4px;
+}
+
+/* Optional: Fallback for non-WebKit browsers */
+html {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #60a5fa #1e3a8a; /* Firefox */
+}
